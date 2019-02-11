@@ -1,0 +1,18 @@
+<h1>Scrabble</h1>
+<div class="wrapper">
+  <div class="letter-container">
+    <% @letter_choice.each do |letter| %>
+      <p><%= letter %></p>
+    <% end %>
+  </div>
+
+  <div class="form-container">
+    <p>Write the longest word you can think of from the words above:</p>
+    <form action="/score">
+      <input type="text" name="answer" placeholder="Enter a word">
+      <input type="hidden" id="letter_choice" name="letter_choice" value="<%= @letter_choice.join %>"/>
+      <input type="hidden" id="start_time" name="start_time" value="<%= DateTime.now %>"/>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
