@@ -22,6 +22,7 @@ class GamesController < ApplicationController
   def display_message
     return @messages[:array_fail] unless check_word_against_array
     return @messages[:dictionary_fail] unless check_word_against_dictionary
+
     @messages[:success]
   end
 
@@ -49,7 +50,7 @@ class GamesController < ApplicationController
     score = params[:answer].length
     start_time = params[:start_time].to_time
     total_time = DateTime.now.to_time - start_time
-    final_score = score * total_time
+    final_score = score*1000 / total_time
     final_score.round
   end
 end
